@@ -117,7 +117,7 @@ Eficiência(p) = Speedup(p) / p
 
 O speedup ideal pra 4 processos seria 4,0x, mas o que conseguimos foi 1,66x. Isso acontece porque criar processos no Python tem um custo, e os dados precisam ser "empacotados" pra ser enviados entre os processos, o que consome tempo.
 
-De 1 pra 2 processos o ganho foi bom (1,40x), de 2 pra 4 melhorou mais um pouco (1,66x), mas de 4 pra 8 quase não mudou nada, e com 12 processos ficou até mais lento do que com 4. Isso faz sentido porque a máquina tem só 6 núcleos físicos, então colocar 12 processos não ajuda e ainda atrapalha.
+De 1 pra 2 processos o ganho foi bom (1,40x), de 2 pra 4 melhorou mais um pouco (1,66x), mas de 4 pra 8 quase não mudou nada, e com 12 processos ficou até mais lento do que com 4.
 
 A eficiência caiu bastante conforme foram adicionados mais processos. Com 2 processos já caiu pra 0,70, e com 12 ficou em apenas 0,13 — ou seja, 87% do tempo estava sendo "desperdiçado" com overhead.
 
@@ -129,20 +129,12 @@ O paralelismo com `multiprocessing` funcionou e trouxe sim uma melhora em relaç
 
 Mas o ganho foi bem menor do que o esperado na teoria. Isso acontece porque a operação de somar números é simples demais — o tempo que o Python gasta criando os processos e mandando os dados entre eles acaba sendo quase do mesmo tamanho que o próprio cálculo.
 
-Se a tarefa fosse mais pesada computacionalmente (tipo processar imagens ou treinar um modelo), o ganho de usar mais processos seria bem maior e valeria mais a pena.
-
-### O que poderia melhorar
-
-- Usar `numpy` que faz a soma muito mais rápido sem precisar de paralelismo
-- Usar memória compartilhada pra evitar ficar copiando os dados entre processos
-- Testar com tarefas mais pesadas pra aproveitar melhor o paralelismo
-
 ---
 
 ## Como executar
 
 ```bash
-python benchmark_multiprocessing.py numero10m.txt
+python benchmark_multiprocessing.py numero2.txt
 ```
 
 Ou sem argumento (o programa vai pedir o caminho):
