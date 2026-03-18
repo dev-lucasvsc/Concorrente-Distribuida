@@ -10,14 +10,14 @@
 
 ## 1. Descrição do Problema
 
-O programa foi feito pra somar uma lista de 10 milhões de números inteiros (positivos, negativos e zeros) usando paralelismo, ou seja, dividindo o trabalho entre vários processos ao mesmo tempo pra ver se fica mais rápido.
+O programa foi feito pra somar uma lista de 10 milhões de números inteiros usando paralelismo, ou seja, dividindo o trabalho entre vários processos ao mesmo tempo pra ver se fica mais rápido.
 
 A ideia é simples: a lista é dividida em partes iguais, cada processo soma a sua parte, e no final tudo é somado junto pra dar o resultado final.
 
 | Pergunta | Resposta |
 |----------|----------|
 | Objetivo | Somar 10 milhões de números usando paralelismo e comparar os tempos |
-| Volume de dados | 10.000.000 de números inteiros em um arquivo .txt (um por linha) |
+| Volume de dados | 10.000.000 de números inteiros em um arquivo .txt |
 | Algoritmo | Divisão da lista em partes + soma paralela com `multiprocessing.Pool.map()` |
 | Complexidade | O(n/p) — quanto mais processos, menos trabalho por processo |
 
@@ -45,7 +45,7 @@ Cada configuração foi rodada **3 vezes** e o tempo usado foi a **média** das 
 
 ### Configurações testadas
 
-- 1 processo (sem paralelismo — usado como base de comparação)
+- 1 processo
 - 2 processos
 - 4 processos
 - 8 processos
